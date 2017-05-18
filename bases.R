@@ -226,7 +226,7 @@ character(5)               # initialisé avec chaînes vides
 ###
 
 ## Une matrice est un vecteur avec un attribut 'dim' de
-## longueur 2 une classe implicite "matrix". La manière
+## longueur 2 et une classe implicite "matrix". La manière
 ## naturelle de créer une matrice est avec la fonction
 ## 'matrix'.
 (x <- matrix(1:12, nrow = 3, ncol = 4)) # créer la matrice
