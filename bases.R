@@ -323,7 +323,7 @@ y <- list(TRUE, 1:5)       # liste de deux éléments
 c(x, y)                    # liste de six éléments
 
 ## Pour initialiser une liste d'une longueur déterminée, mais
-## dont chaque élément est vide, uitliser la fonction
+## dont chaque élément est vide, utiliser la fonction
 ## 'vector'.
 vector("list", 5)          # liste de NULL
 
@@ -343,8 +343,8 @@ x[[c(2, 1)]]               # idem, par indiçage récursif
 ## une bonne habitude à prendre!), il est souvent plus simple
 ## et sûr d'extraire les éléments d'une liste par leur
 ## étiquette.
-x$joueur                   # équivalent à a[[1]]
-x$score[1]                 # équivalent à a[[c(2, 1)]]
+x$joueur                   # équivalent à x[[1]]
+x$score[1]                 # équivalent à x[[c(2, 1)]]
 x[["expert"]]              # aussi valide, mais peu usité
 x$level <- 1               # aussi pour l'affectation
 
