@@ -12,15 +12,15 @@ a <- array(sample(1:100, 60), dim = 3:5)
 ## Les fonctions 'rowSums', 'colSums', 'rowMeans' et
 ## 'colMeans' sont des raccourcis pour des utilisations
 ## fréquentes de 'apply'.
-rowSums(m)                 # somme par ligne
+rowSums(m)                 # sommes par ligne
 apply(m, 1, sum)           # idem, mais moins lisible
-colMeans(m)                # somme par colonne
+colMeans(m)                # moyennes par colonne
 apply(m, 2, mean)          # idem, mais moins lisible
 
 ## Puisqu'il n'existe pas de fonctions comme 'rowMax' ou
 ## 'colProds', il faut utiliser 'apply'.
-apply(m, 1, max)           # maximum par ligne
-apply(m, 2, prod)          # produit par colonne
+apply(m, 1, max)           # maximums par ligne
+apply(m, 2, prod)          # produits par colonne
 
 ## L'argument '...' de 'apply' permet de passer des arguments
 ## à la fonction FUN.
