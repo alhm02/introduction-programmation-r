@@ -37,26 +37,6 @@ VERSIONSTR = $(shell grep "newcommand{\\\\edstr" ${MASTER:.pdf=.tex} \
 ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER:.pdf=.tex} \
 	| cut -d } -f 2 | tr -d {)
 
-## Le document maître dépend de tous les fichiers .tex et des fichiers
-## .R mentionnés
-RNWFILES = $(wildcard *.Rnw)
-TEXFILES = \
-	frontispice.tex \
-	notices.tex \
-	introduction.tex \
-	emacs+ess.tex \
-	rstudio.tex \
-	packages.tex \
-	reponses.tex
-RFILES = \
-	presentation.R \
-	bases.R \
-	operateurs.R \
-	fonctions.R \
-	avance.R \
-	optimisation.R \
-	rng.R
-
 ## Liste des fichiers dans lesquels il y a des url vers des vidéos à traiter
 ## (liste extraite du fichier ${URL})
 URLFILES = $(shell awk '/^[^\#]/ && !seen[$$1]++ { print $$1 }' ${URL})
@@ -141,16 +121,7 @@ upload :
 
 publish :
 	@echo ----- Publishing the web page...
-	cd docs && \
-	sed -e 's/<VERSION>/${VERSION}/g' \
-	    -e 's/<VERSIONSTR>/${VERSIONSTR}/' \
-	    -e 's/<ISBN>/${ISBN}/' \
-	    index.md.in > index.md && \
-	sed -e 's/<VERSION>/${VERSION}/g' \
-	    -e 's/<MASTER>/${MASTER}/' \
-	    _layouts/default.html.in > _layouts/default.html
-	git commit -a -m "Mise à jour de la page web pour l'édition ${VERSION}" && \
-	git push
+	${MKAE} -C docs
 	@echo ----- Done publishing
 
 clean:

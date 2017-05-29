@@ -23,16 +23,15 @@ L'ouvrage se base sur des notes de cours et des exercices utilisés à
 l'[École d'actuariat](http://www.act.ulaval.ca) de
 l'[Université Laval](http://www.ulaval.ca).
 
-## Plus récente version
+## Version
 
-Cinquième édition révisée, ISBN 978-2-9811416-6-8 
+Quatrième édition, ISBN 183874
+[nouveautés]({{ site.github.repository_url }}/releases/tag/edition-4a)
 
 ## Code des sections d'exemples
 
-Consulter les [notes de mise à jour]({{ site.github.repository_url
-}}/releases/tag/edition-5a) pour télécharger le code R des
-sections d'exemples ou suivre simplement le lien direct fourni au
-début du document.
+Suivre simplement le lien direct fourni au début du document pour
+télécharger le code R des sections d'exemples.
 
 
 # Quelques caractéristiques
