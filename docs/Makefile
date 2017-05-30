@@ -21,7 +21,7 @@ ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER} \
 
 update-pages:
 	awk 'BEGIN { FS = "/"; OFS = "/" } \
-	     /^## Version/ { print; getline; print; getline; \
+	     /^## Édition/ { print; getline; print; getline; \
 	                     print "${VERSIONSTR}, ISBN ${ISBN}"; next } \
 	     /^\[nouveautés\]/ { $$4 = "edition-${VERSION}" } 1' \
 	    index.md > tmpfile && \
@@ -34,4 +34,3 @@ update-pages:
 	git commit index.md _layouts/default.html \
 	    -m "Mise à jour de la page web pour l'édition ${VERSION}" && \
 	  git push
-	@echo ----- Done publishing
