@@ -121,7 +121,7 @@ upload :
 
 publish :
 	@echo ----- Publishing the web page...
-	${MKAE} -C docs
+	${MAKE} -C docs
 	@echo ----- Done publishing
 
 clean:
