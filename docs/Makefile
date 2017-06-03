@@ -9,8 +9,8 @@
 ## http://github.com/vigou3/introduction-programmation-r
 
 
-## Variables définies normalement dans ../Makefile, mais répétées ici
-## pour pouvoir appeler 'make' seulement dans ce répertoire.
+## Variables définies dans ../Makefile répétées ici pour appels
+## directs dans le présent répertoire.
 MASTER = ../introduction-programmation-r.tex
 VERSION = $(shell grep "newcommand{\\\\ednum" ${MASTER} \
 	| cut -d } -f 2 | tr -d {)
@@ -19,18 +19,26 @@ VERSIONSTR = $(shell grep "newcommand{\\\\edstr" ${MASTER} \
 ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER} \
 	| cut -d } -f 2 | tr -d {)
 
-update-pages:
+## Fichiers à modifier.
+INDEX = index.md
+DEFAULT = default.html
+
+all: files commit
+
+files:
 	awk 'BEGIN { FS = "/"; OFS = "/" } \
 	     /^## Édition/ { print; getline; print; getline; \
 	                     print "${VERSIONSTR}, ISBN ${ISBN}"; next } \
 	     /^\[nouveautés\]/ { $$4 = "edition-${VERSION}" } 1' \
-	    index.md > tmpfile && \
-	  mv tmpfile index.md
+	    ${INDEX} > tmpfile && \
+	  mv tmpfile ${INDEX}
 	cd _layouts && \
 	  awk 'BEGIN { FS = "/"; OFS = "/" } \
 	       /{{ site.github.releases_url }}/ { $$3 = "edition-${VERSION}" } 1' \
-	       default.html > tmpfile && \
-	  mv tmpfile default.html
-	git commit index.md _layouts/default.html \
+	       ${DEFAULT} > tmpfile && \
+	  mv tmpfile ${DEFAULT}
+
+commit:
+	git commit ${INDEX} _layouts/${DEFAULT} \
 	    -m "Mise à jour de la page web pour l'édition ${VERSION}" && \
 	  git push
