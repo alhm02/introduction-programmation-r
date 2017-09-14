@@ -1,3 +1,9 @@
+---
+title: Introduction à la programmation avec R
+tagline: Derrière les outils statistiques, il y a un langage de programmation
+description: Document d'introduction à la programmation dans le langage R
+---
+
 # Présentation
 
 De nombreux ouvrages traitent de l'utilisation du système
